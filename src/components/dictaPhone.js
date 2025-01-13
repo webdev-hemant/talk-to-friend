@@ -26,12 +26,12 @@ const Dictaphone = ({
 
   return (
     <div>
-      <h1>Listening: {listening ? "True" : "False"}</h1>
-      <p>Microphone: {listening ? "on" : "off"}</p>
+      {/* <h1>Listening: {listening ? "True" : "False"}</h1> */}
+      {/* <p>Microphone: {listening ? "on" : "off"}</p> */}
       <button onClick={SpeechRecognition.startListening}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
-      <p>{transcript}</p>
+      {/* <p>{transcript}</p> */}
     </div>
   );
 };

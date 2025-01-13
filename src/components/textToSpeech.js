@@ -19,7 +19,7 @@ const TextToSpeech = ({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", rowGap: "1rem" }}>
-      <Text />
+      {/* <Text /> */}
       <div style={{ display: "flex", columnGap: "0.5rem" }}>
         {speechStatus !== "started" ? (
           <button onClick={start}>Start</button>
