@@ -2,15 +2,17 @@ import React, { useEffect } from "react";
 
 const Dictaphone = ({
   setText,
-  transcript,
+  finalTranscript,
   listening,
   resetTranscript,
   browserSupportsSpeechRecognition,
   SpeechRecognition,
 }) => {
-  useEffect(() => {
-    setText(transcript);
-  }, [transcript]);
+  // useEffect(() => {
+  //   if (finalTranscript) {
+  //     setText(finalTranscript);
+  //   }
+  // }, [finalTranscript]);
 
   //   useEffect(() => {
   //     if (listening) {
@@ -28,10 +30,10 @@ const Dictaphone = ({
     <div>
       {/* <h1>Listening: {listening ? "True" : "False"}</h1> */}
       {/* <p>Microphone: {listening ? "on" : "off"}</p> */}
-      <button onClick={SpeechRecognition.startListening}>Start</button>
-      <button onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      {/* <p>{transcript}</p> */}
+      {/* <button onClick={SpeechRecognition.startListening}>Start</button> */}
+      {/* <button onClick={SpeechRecognition.stopListening}>Stop</button> */}
+      {/* <button onClick={resetTranscript}>Reset</button> */}
+      {/* <p>{finalTranscript}</p> */}
     </div>
   );
 };

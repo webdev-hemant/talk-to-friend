@@ -1,16 +1,17 @@
 import React from "react";
 import { FaMicrophoneLines, FaMicrophoneLinesSlash } from "react-icons/fa6";
-import "./micAnimation.css"; // Make sure to create this CSS file.
+import "./micAnimation.css";
 
-const MicrophoneIcon = ({ isMicActive = false }) => {
+const MicrophoneIcon = ({ isMicActive = false, speechStatus, startMic }) => {
   return (
-    <div
-      className={`${isMicActive ? "active" : "nonActive"} microphone-icon`}
-    >
+    <div className={`${isMicActive ? "active" : "nonActive"} microphone-icon`}>
       {isMicActive ? (
         <FaMicrophoneLines className="pulse" />
       ) : (
-        <FaMicrophoneLinesSlash />
+        <FaMicrophoneLinesSlash
+          style={{ cursor: "pointer" }}
+          onClick={() => startMic()}
+        />
       )}
     </div>
   );

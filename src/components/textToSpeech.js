@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSpeech } from "react-text-to-speech";
 
 const TextToSpeech = ({
-  transcript,
+  finalTranscript,
   Text,
   speechStatus,
   isInQueue,
@@ -10,12 +10,13 @@ const TextToSpeech = ({
   pause,
   stop,
 }) => {
+  // console.log({ finalTranscript, speechStatus });
 
-  useEffect(() => {
-    if (transcript) {
-      start();
-    }
-  }, [transcript]);
+  // useEffect(() => {
+  //   if (finalTranscript && speechStatus !== "started") {
+  //     start();
+  //   }
+  // }, [finalTranscript]);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", rowGap: "1rem" }}>
