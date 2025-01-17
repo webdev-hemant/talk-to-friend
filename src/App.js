@@ -10,6 +10,8 @@ import SpeechRecognition, {
 import MicAnimation from "./components/micAnimation/micAnimation";
 import { HiMiniSpeakerWave } from "react-icons/hi2";
 
+let SPEECH_TIMEOUT = null;
+
 function App() {
   const [text, setText] = useState(null);
 
@@ -41,10 +43,18 @@ function App() {
   };
 
   useEffect(() => {
-    if (listening) {
-      console.log(listening);
+    if (SPEECH_TIMEOUT && speechStatus === 'started') {
+      clearTimeout(SPEECH_TIMEOUT);
+    } else {
+      SPEECH_TIMEOUT = setTimeout(startMic, 1500);
     }
-  }, [listening]);
+  }, [speechStatus, listening]);
+
+  // useEffect(() => {
+  //   if (listening) {
+  //     console.log(listening);
+  //   }
+  // }, [listening]);
 
   useEffect(() => {
     if (finalTranscript) {
@@ -85,17 +95,6 @@ function App() {
               SpeechRecognition,
             }}
           />
-          {/* <TextToSpeech
-            {...{
-              finalTranscript,
-              Text,
-              speechStatus,
-              isInQueue,
-              start,
-              pause,
-              stop,
-            }}
-          /> */}
         </>
       )}
       {text === null && <h3>No speech found! Try expressing yourself...</h3>}{" "}
