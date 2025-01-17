@@ -14,6 +14,7 @@ let SPEECH_TIMEOUT = null;
 
 function App() {
   const [text, setText] = useState(null);
+  const [speechHistory, setSpeechHistory] = useState([]);
 
   const { Text, speechStatus, isInQueue, start, pause, stop } = useSpeech({
     text,
@@ -36,14 +37,14 @@ function App() {
     finalTranscript,
   } = useSpeechRecognition();
 
-  console.log({ speechStatus, finalTranscript, text, listening });
+  console.log({ speechStatus, finalTranscript, text, listening, speechHistory });
 
   const startMic = () => {
     SpeechRecognition.startListening();
   };
 
   useEffect(() => {
-    if (SPEECH_TIMEOUT && speechStatus === 'started') {
+    if (SPEECH_TIMEOUT && speechStatus === "started") {
       clearTimeout(SPEECH_TIMEOUT);
     } else {
       SPEECH_TIMEOUT = setTimeout(startMic, 1500);
@@ -59,6 +60,7 @@ function App() {
   useEffect(() => {
     if (finalTranscript) {
       setText(finalTranscript);
+      setSpeechHistory((prev) => [...prev, finalTranscript]);
     }
   }, [finalTranscript]);
 
@@ -98,8 +100,15 @@ function App() {
         </>
       )}
       {text === null && <h3>No speech found! Try expressing yourself...</h3>}{" "}
-      {text && <h3>Speech: {text}</h3>}
+      {/* {text && <h3>{text}</h3>} */}
       {text === "" && <h3>Nice, wanna try again!</h3>}
+      <div>
+        <ol>
+          {speechHistory.map((item, key) => {
+            return <li key={key}>{item}</li>;
+          })}
+        </ol>
+      </div>
     </div>
   );
 }
