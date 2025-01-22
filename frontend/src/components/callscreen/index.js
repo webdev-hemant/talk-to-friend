@@ -36,7 +36,7 @@ const CallScreen = () => {
     finalTranscript,
   } = useSpeechRecognition();
 
-  console.log({ speechStatus, finalTranscript, text, listening, speechHistory });
+  // console.log({ speechStatus, finalTranscript, text, listening, speechHistory });
 
   const startMic = () => {
     SpeechRecognition.startListening();

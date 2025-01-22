@@ -1,8 +1,8 @@
 import CallScreen from "./components/callscreen";
-import "./App.css";
 import Navbar from "./components/navbar/navbar";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <div className="">
       <Navbar />
@@ -11,6 +11,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
