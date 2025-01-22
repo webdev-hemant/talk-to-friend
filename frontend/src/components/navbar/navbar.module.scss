@@ -1,0 +1,12 @@
+.navContainer {
+  padding: 0.5rem 1rem;
+  background-color: #e9e3dc;
+  .iconWrapper {
+    display: flex;
+    justify-content: space-between;
+    .icon {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  }
+}

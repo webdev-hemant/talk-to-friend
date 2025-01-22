@@ -7,10 +7,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* color: #e9e3dc;
+}
+
+.cat {
+  color: #e9e3dc;
   color: #867dd0;
   color: #fefefe;
   color: #eae4dc;
   color: #e9e3db;
-  color: #fdfdfc; */
+  color: #fdfdfc;
 }
