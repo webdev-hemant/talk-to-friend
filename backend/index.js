@@ -1,52 +1,63 @@
-require('dotenv').config();
-const express = require('express');
-// const { Configuration, OpenAIApi } = require('openai');
-const OpenAI = require('openai');
-const openai = new OpenAI();
+const WebSocket = require('ws')
 
-const app = express();
-const port = 5000;
+// Replace with the actual OpenAI WebSocket endpoint
+const url = "wss://api.openai.com/v1/realtime?model=gpt-4o-realtime-preview-2024-12-17";
 
-// Middleware to parse JSON requests
-app.use(express.json());
+// Ensure your OpenAI API key is securely stored (e.g., in environment variables)
+const apiKey = process.env.OPENAI_API_KEY;
+if (!apiKey) {
+  console.error("API key not found in environment variables.");
+  process.exit(1);
+}
 
-// OpenAI Configuration
-// const configuration = new Configuration({
-//   apiKey: process.env.OPENAI_API_KEY,
-// });
-// const openai = new OpenAIApi(configuration);
+const ws = new WebSocket(url, {
+  headers: {
+    "Authorization": `Bearer ${apiKey}`,
+    "OpenAI-Beta": "realtime=v1",
+  },
+});
 
-// POST route to interact with ChatGPT
-app.post('/chat', async (req, res) => {
-  const { prompt } = req.body;
+// When the WebSocket connection opens
+ws.on("open", () => {
+  console.log("Connected to ChatGPT server.");
 
-  if (!prompt) {
-    return res.status(400).json({ error: 'Prompt is required' });
-  }
+  // Sending an initial message to the model
+  const initialMessage = {
+    role: "user",
+    content: "Hello, ChatGPT!",
+  };
 
+  ws.send(JSON.stringify(initialMessage));
+});
+
+// Handling incoming messages from the server
+ws.on("message", (data) => {
   try {
-    // const response = await openai.createChatCompletion({
-    //   model: "gpt-4",
-    //   messages: [{ role: "user", content: prompt }],
-    // });
-
-    // const message = response.data.choices[0].message.content;
-    const completion = await openai.chat.completions.create({
-        model: "gpt-4-turbo",
-        store: true,
-        messages: [
-            {"role": "user", "content": "write a haiku about ai"}
-        ]
-    });
-    console.log(completion);
-    res.json({ reply: completion });
+    const message = JSON.parse(data);
+    console.log("Received response:", message);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
+    console.error("Error parsing incoming message:", error);
   }
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Handle connection errors
+ws.on("error", (error) => {
+  console.error("WebSocket error:", error);
+});
+
+// To send events, create a JSON-serializeable data structure that
+// matches a client-side event (see API reference)
+const event = {
+  type: "response.create",
+  response: {
+    modalities: ["audio", "text"],
+    instructions: "Give me a haiku about code.",
+  }
+};
+
+ws.send(JSON.stringify(event));
+
+// Handle connection closure
+ws.on("close", (code, reason) => {
+  console.log(`Connection closed (Code: ${code}, Reason: ${reason})`);
 });

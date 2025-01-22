@@ -1,3 +1,16 @@
 .text-lg {
   font-size: 2.5rem;
 }
+
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* color: #e9e3dc;
+  color: #867dd0;
+  color: #fefefe;
+  color: #eae4dc;
+  color: #e9e3db;
+  color: #fdfdfc; */
+}
