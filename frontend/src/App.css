@@ -1,6 +1,6 @@
-.text-lg {
-  font-size: 2.5rem;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .App {
   height: 100vh;
