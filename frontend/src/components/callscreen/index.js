@@ -76,7 +76,7 @@ const CallScreen = () => {
   }, [speechStatus]);
 
   return (
-    <div>
+    <div className="flex justify-center flex-col items-center">
       {speechStatus === "started" ? (
         <HiMiniSpeakerWave className="text-lg" />
       ) : (
