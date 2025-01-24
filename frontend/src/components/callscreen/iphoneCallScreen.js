@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CallScreen.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const DEFAULT_RANGE = 4;
 let RANGE_TIMEOUT = null;
 
 const IphoneCallscreen = () => {
-  const [isIncoming, setIsIncoming] = useState(true);
   const [range, setRange] = useState(DEFAULT_RANGE);
 
+  const navigate = useNavigate();
+
   const handleAccept = () => {
-    alert("Call Accepted");
+    navigate("/call");
   };
 
   const handleDecline = () => {
