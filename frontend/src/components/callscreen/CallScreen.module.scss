@@ -1,0 +1,84 @@
+/* RangeSlider.module.scss */
+.iphoneCallscreenWrapper {
+  @apply text-center; /* Tailwind utility class */
+}
+
+.rangeSlider {
+  @apply w-80 mt-10 h-14 rounded-lg appearance-none cursor-pointer;
+  background-color: #867dd0;
+  &::-webkit-slider-thumb {
+    position: relative; /* Needed for the icon positioning */
+    -webkit-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    background: #fff; /* Green color */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    /* Add icon inside the thumb using pseudo-element */
+    &::before {
+      content: "\f007"; /* FontAwesome icon (replace with any icon you want) */
+      font-family: "Font Awesome 5 Free"; /* FontAwesome font */
+      font-weight: 900; /* Icon weight */
+      color: red; /* Icon color */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the icon */
+      font-size: 16px; /* Icon size */
+    }
+  }
+
+  &::-webkit-slider-thumb:hover {
+    background: #e9e3dc; /* Darker green on hover */
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    &::before {
+      content: "\f007"; /* FontAwesome icon */
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: red;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+    }
+  }
+
+  &::-moz-range-thumb:hover {
+    background: #8f45a0;
+  }
+
+  &::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    &::before {
+      content: "\f007"; /* FontAwesome icon */
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: red;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+    }
+  }
+
+  &::-ms-thumb:hover {
+    background: #a04572;
+  }
+}
