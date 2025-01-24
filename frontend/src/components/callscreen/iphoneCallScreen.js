@@ -29,7 +29,7 @@ const IphoneCallscreen = () => {
       setRange(DEFAULT_RANGE);
     } else {
       if (RANGE_TIMEOUT) clearTimeout(RANGE_TIMEOUT);
-      RANGE_TIMEOUT = setTimeout(() => setRange(DEFAULT_RANGE), 100);
+      RANGE_TIMEOUT = setTimeout(() => setRange(DEFAULT_RANGE), 500);
     }
   }, [range]);
 
