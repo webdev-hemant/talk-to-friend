@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./CallScreen.module.scss";
 
 const DEFAULT_RANGE = 4;
+let RANGE_TIMEOUT = null;
 
 const IphoneCallscreen = () => {
   const [isIncoming, setIsIncoming] = useState(true);
@@ -23,9 +24,12 @@ const IphoneCallscreen = () => {
   };
 
   useEffect(() => {
-    if (range >= 95) {
+    if (range >= 90) {
       handleAccept();
       setRange(DEFAULT_RANGE);
+    } else {
+      if (RANGE_TIMEOUT) return clearTimeout(RANGE_TIMEOUT);
+      RANGE_TIMEOUT = setTimeout(() => {}, 500);
     }
   }, [range]);
 
@@ -41,11 +45,6 @@ const IphoneCallscreen = () => {
           type="range"
           value={range}
           onChange={handleRange}
-          onMouseDown={(e) => {
-            if (range < 90) {
-              alert("Mouse down " + range);
-            }
-          }}
           className={styles.rangeSlider}
         />
       </div>
