@@ -16,22 +16,15 @@
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s;
-    /* Add icon inside the thumb using pseudo-element */
-    &::before {
-      content: "\f007"; /* FontAwesome icon (replace with any icon you want) */
-      font-family: "Font Awesome 5 Free"; /* FontAwesome font */
-      font-weight: 900; /* Icon weight */
-      color: red; /* Icon color */
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Center the icon */
-      font-size: 16px; /* Icon size */
-    }
+    background-image: url("../../images/arrow.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform: rotate(-90deg);
   }
 
   &::-webkit-slider-thumb:hover {
-    background: #e9e3dc; /* Darker green on hover */
+    // background: #e9e3dc; /* Darker green on hover */
   }
 
   &::-moz-range-thumb {
@@ -41,16 +34,18 @@
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s;
-    &::before {
-      content: "\f007"; /* FontAwesome icon */
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      color: red;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 16px;
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 23px;
+      height: 24px;
+      border: 0;
+      border-radius: 50%;
+      background-image: url("https://img.icons8.com/material-outlined/344/average-2.png");
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      cursor: pointer;
     }
   }
 
@@ -65,16 +60,18 @@
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s;
-    &::before {
-      content: "\f007"; /* FontAwesome icon */
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      color: red;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 16px;
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 23px;
+      height: 24px;
+      border: 0;
+      border-radius: 50%;
+      background-image: url("https://img.icons8.com/material-outlined/344/average-2.png");
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      cursor: pointer;
     }
   }
 
