@@ -6,6 +6,19 @@
 .rangeSlider {
   @apply w-80 mt-10 h-14 rounded-lg appearance-none cursor-pointer;
   background-color: #867dd0;
+  position: relative;
+  &::after {
+    content: 'Start call';
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: blink 2s infinite;
+  }
+
   &::-webkit-slider-thumb {
     position: relative; /* Needed for the icon positioning */
     -webkit-appearance: none;
@@ -21,6 +34,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     transform: rotate(-90deg);
+    z-index: 2;
   }
 
   &::-webkit-slider-thumb:hover {
@@ -77,5 +91,18 @@
 
   &::-ms-thumb:hover {
     background: #a04572;
+  }
+}
+
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
