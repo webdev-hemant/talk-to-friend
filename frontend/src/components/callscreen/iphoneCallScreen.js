@@ -28,8 +28,8 @@ const IphoneCallscreen = () => {
       handleAccept();
       setRange(DEFAULT_RANGE);
     } else {
-      if (RANGE_TIMEOUT) return clearTimeout(RANGE_TIMEOUT);
-      RANGE_TIMEOUT = setTimeout(() => {}, 500);
+      if (RANGE_TIMEOUT) clearTimeout(RANGE_TIMEOUT);
+      RANGE_TIMEOUT = setTimeout(() => setRange(DEFAULT_RANGE), 100);
     }
   }, [range]);
 
