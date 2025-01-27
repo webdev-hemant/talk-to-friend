@@ -7,12 +7,12 @@ import "./callFace.css";
 
 const CallFace = () => {
   return (
-    <div class="container">
-      <div class="box">
-        <div class="spin-container">
-          <div class="shape">
+    <div className="container">
+      <div className="box">
+        <div className="spin-container">
+          <div className="shape">
             <div
-              class="bd"
+              className="bd"
               style={{
                 backgroundImage: `url("${man3}")`,
                 backgroundPosition: "center",
