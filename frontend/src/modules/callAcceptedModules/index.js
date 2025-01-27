@@ -6,9 +6,9 @@ import CallButton from "./callButton";
 import styles from "./callAcceptedModules.module.scss";
 
 const CallAcceptedModules = () => {
-  const [avatar, setAvatar] = useState(allMen["men1"]);
+  const [avatar, setAvatar] = useState(allMen["men4"]);
 
-  const handleSetAvatar = (avatarName = "men2") => {
+  const handleSetAvatar = (avatarName = "men1") => {
     setAvatar(allMen[avatarName]);
   };
 
