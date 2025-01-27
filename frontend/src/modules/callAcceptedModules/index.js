@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../../components/navbar/navbar";
 import CallFace from "./callFace";
 import { allMen } from "../../constants";
+import CallButton from "./callButton";
 import styles from "./callAcceptedModules.module.scss";
 
 const CallAcceptedModules = () => {
@@ -16,6 +17,7 @@ const CallAcceptedModules = () => {
       {/* <Navbar /> */}
       <div className={styles.callAcceptedWrapper}>
         <CallFace {...avatar} />
+        <CallButton />
       </div>
     </>
   );
