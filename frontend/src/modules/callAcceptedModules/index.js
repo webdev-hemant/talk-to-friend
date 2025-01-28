@@ -3,8 +3,8 @@ import Navbar from "../../components/navbar/navbar";
 import CallFace from "./callFace";
 import { allMen } from "../../constants";
 import CallButton from "./callButton";
-import styles from "./callAcceptedModules.module.scss";
 import SwiperModule from "../../components/swiper";
+import styles from "./callAcceptedModules.module.scss";
 
 const CallAcceptedModules = () => {
   const [avatar, setAvatar] = useState(allMen["men4"]);
@@ -17,8 +17,8 @@ const CallAcceptedModules = () => {
     <>
       {/* <Navbar /> */}
       <div className={styles.callAcceptedWrapper}>
-        <SwiperModule />
-        {/* <CallFace {...avatar} /> */}
+        {/* <SwiperModule /> */}
+        <CallFace {...avatar} />
         <CallButton />
       </div>
     </>

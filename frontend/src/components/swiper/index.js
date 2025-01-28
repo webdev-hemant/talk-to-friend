@@ -1,8 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useSwiper } from "swiper/react";
+import { allMen } from "../../constants";
 
 const SwiperModule = () => {
-  const swiper = useSwiper();
   return (
     <div>
       <Swiper
@@ -11,10 +10,21 @@ const SwiperModule = () => {
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        <SwiperSlide><div>swipe 1</div></SwiperSlide>
-        <SwiperSlide><div>swipe 2</div></SwiperSlide>
-        <SwiperSlide><div>swipe 3</div></SwiperSlide>
-        <SwiperSlide><div>swipe 4</div></SwiperSlide>
+        {Object.keys(allMen).map((men, key) => {
+          return (
+            <SwiperSlide key={key}>
+              <div className="flex justify-center pt-16">
+                <img
+                  src={allMen[men].img}
+                  style={{ objectFit: "contain" }}
+                  width={200}
+                  height={300}
+                  alt="img"
+                />
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
